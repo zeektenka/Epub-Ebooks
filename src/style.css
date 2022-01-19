@@ -18,7 +18,6 @@ body {
   background-color: whitesmoke;
   border-radius: 3px;
   border: 1px solid black;
-  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -53,4 +52,9 @@ body {
   display: flex;
   align-items: center;
   vertical-align: middle;
+}
+
+.icon-btn {
+  border: none;
+  background-color: transparent;
 }

@@ -3,6 +3,9 @@ import { ReactReader } from 'react-reader';
 import { HiOutlineCog } from 'react-icons/hi';
 
 const Epub = () => {
+  // Settings Tile Stuff
+  const [settingsOpen, setSettingOpen] = useState(false);
+
   // And your own state logic to persist state
   const [location, setLocation] = localStorage.CurrentPage
     ? useState(JSON.parse(localStorage.CurrentPage))
@@ -14,8 +17,10 @@ const Epub = () => {
     localStorage.setItem('CurrentPage', JSON.stringify(location));
   };
 
-  // Font stuff
-  const [size, setSize] = useState(100);
+  // Font size stuff
+  const [size, setSize] = localStorage.fontSize
+    ? useState(JSON.parse(localStorage.fontSize))
+    : useState(100);
   const renditionRef = useRef(null);
   const changeSize = (newSize) => {
     setSize(newSize);
@@ -23,6 +28,7 @@ const Epub = () => {
   useEffect(() => {
     if (renditionRef.current) {
       renditionRef.current.themes.fontSize(`${size}%`);
+      localStorage.setItem('fontSize', JSON.stringify(size));
     }
   }, [size]);
 
@@ -38,15 +44,29 @@ const Epub = () => {
         }}
       />
       <div className="settings">
-        <HiOutlineCog color="grey" fontSize="1.4rem" />
-        <div id="settings_container">
-          <p className='small-title'>Font Size</p>
-          <div className='fontsize_change_div'>
-            <button className='small-btn' onClick={() => changeSize(Math.max(80, size - 10))}>
+        <button
+          className="icon-btn"
+          onClick={() => setSettingOpen(!settingsOpen)}
+        >
+          <HiOutlineCog color="grey" fontSize="1.4rem" />
+        </button>
+        <div
+          id="settings_container"
+          style={{ display: settingsOpen ? 'flex' : 'none' }}
+        >
+          <p className="small-title">Font Size</p>
+          <div className="fontsize_change_div">
+            <button
+              className="small-btn"
+              onClick={() => changeSize(Math.max(70, size - 10))}
+            >
               -
             </button>
             <span className="size">{size}%</span>
-            <button className='small-btn' onClick={() => changeSize(Math.min(130, size + 10))}>
+            <button
+              className="small-btn"
+              onClick={() => changeSize(Math.min(150, size + 10))}
+            >
               +
             </button>
           </div>
