@@ -40,7 +40,7 @@ const Epub = () => {
       <div className="settings">
         <HiOutlineCog color="grey" fontSize="1.4rem" />
         <div id="settings_container">
-          <p>Font Size</p>
+          <p className='small-title'>Font Size</p>
           <div className='fontsize_change_div'>
             <button className='small-btn' onClick={() => changeSize(Math.max(80, size - 10))}>
               -
