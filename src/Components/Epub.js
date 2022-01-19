@@ -1,30 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReactReader, ReactReaderStyle } from 'react-reader';
-import {
-  HiOutlineCog,
-  HiChevronLeft,
-  HiChevronRight,
-  HiMoon,
-  HiOutlineMoon,
-} from 'react-icons/hi';
+import { HiOutlineCog, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 // If confused ,Read the Docs https://github.com/gerhardsletten/react-reader#add--adjust-custom-css-for-the-epub-html
 
-const Epub = () => {
+const Epub = ({ uri }) => {
   // Settings Tile Stuff
   const [settingsOpen, setSettingOpen] = useState(false);
-
-  // Dark mode & Light mode
-  const [isDark, setDark] = useState(false);
 
   const ownStyles = {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
-      backgroundColor: isDark ? 'black' : 'white',
     },
   };
-  const textColor = { color: isDark ? 'white' : 'black' };
 
   // And your own state logic to persist state
   const [location, setLocation] = localStorage.CurrentPage
@@ -50,27 +39,22 @@ const Epub = () => {
       renditionRef.current.themes.fontSize(`${size}%`);
       localStorage.setItem('fontSize', JSON.stringify(size));
     }
-  }, [size, isDark]);
+  }, [size]);
 
-  useEffect(() => {}, [isDark]);
   return (
     <div style={{ height: '98vh', position: 'relative', top: '0rem' }}>
       <ReactReader
         location={location}
         styles={ownStyles}
         locationChanged={locationChanged}
-        url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+        url={uri}
         getRendition={(rendition) => {
           renditionRef.current = rendition;
           renditionRef.current.themes.fontSize(`${size}%`);
           // Custom Styles
-
           rendition.themes.register('custom', {
             img: {
               width: '100%',
-            },
-            p: {
-              color: isDark ? 'white' : 'green',
             },
           });
           rendition.themes.select('custom');
@@ -104,13 +88,6 @@ const Epub = () => {
               onClick={() => changeSize(Math.min(150, size + 10))}
             >
               <HiChevronRight color="grey" fontSize="1.4rem" />
-            </button>
-          </div>
-
-          <p className="small-title">Dark Mode</p>
-          <div style={{ textAlign: 'center' }}>
-            <button className="icon-btn" onClick={() => setDark(!isDark)}>
-              <HiMoon color="grey" fontSize="1.4rem" />
             </button>
           </div>
         </div>
