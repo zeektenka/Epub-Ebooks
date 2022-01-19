@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ReactReader } from 'react-reader';
 import { HiOutlineCog } from 'react-icons/hi';
 
@@ -13,16 +13,44 @@ const Epub = () => {
     setLocation(epubcifi);
     localStorage.setItem('CurrentPage', JSON.stringify(location));
   };
+
+  // Font stuff
+  const [size, setSize] = useState(100);
+  const renditionRef = useRef(null);
+  const changeSize = (newSize) => {
+    setSize(newSize);
+  };
+  useEffect(() => {
+    if (renditionRef.current) {
+      renditionRef.current.themes.fontSize(`${size}%`);
+    }
+  }, [size]);
+
   return (
     <div style={{ height: '98vh', position: 'relative', top: '0rem' }}>
       <ReactReader
         location={location}
         locationChanged={locationChanged}
         url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+        getRendition={(rendition) => {
+          renditionRef.current = rendition;
+          renditionRef.current.themes.fontSize(`${size}%`);
+        }}
       />
       <div className="settings">
-        {' '}
         <HiOutlineCog color="grey" fontSize="1.4rem" />
+        <div id="settings_container">
+          <p>Font Size</p>
+          <div>
+            <button onClick={() => changeSize(Math.max(80, size - 10))}>
+              -
+            </button>
+            <span>Current size: {size}%</span>
+            <button onClick={() => changeSize(Math.min(130, size + 10))}>
+              +
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
