@@ -20,6 +20,7 @@ body {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .small-btn {
@@ -32,7 +33,6 @@ body {
   background-color: black;
   color: white;
   font-weight: bold;
-  margin: 6px;
 }
 
 .size {
