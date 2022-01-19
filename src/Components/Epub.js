@@ -5,6 +5,15 @@ import { HiOutlineCog, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 // If confused ,Read the Docs https://github.com/gerhardsletten/react-reader#add--adjust-custom-css-for-the-epub-html
 
 const Epub = ({ uri }) => {
+  // Set Page location
+  const [location, setLocation] =
+    localStorage.getItem('CurrentBook') == uri
+      ? useState(JSON.parse(localStorage.CurrentPage))
+      : useState(null);
+
+  // Persist CurrentPage to local storage
+  const current_book = localStorage.getItem('CurrentBook');
+
   // Settings Tile Stuff
   const [settingsOpen, setSettingOpen] = useState(false);
 
@@ -16,9 +25,6 @@ const Epub = ({ uri }) => {
   };
 
   // And your own state logic to persist state
-  const [location, setLocation] = localStorage.CurrentPage
-    ? useState(JSON.parse(localStorage.CurrentPage))
-    : useState(null);
 
   const locationChanged = (epubcifi) => {
     // epubcifi is a internal string used by epubjs to point to a location in an epub. It looks like this: epubcfi(/6/6[titlepage]!/4/2/12[pgepubid00003]/3:0)
