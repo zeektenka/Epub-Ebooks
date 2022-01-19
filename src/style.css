@@ -16,7 +16,7 @@ body {
 
 #settings_container {
   background-color: whitesmoke;
-  border-radius: 10px;
+  border-radius: 3px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -45,8 +45,8 @@ body {
 
 .small-title {
   padding: 0;
-  font-size: 14;
-  font-weight: bold;
+  font-size: 12;
+  text-align:center;
 }
 
 .fontsize_change_div {
