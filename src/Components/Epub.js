@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ReactReader } from 'react-reader';
 import { HiOutlineCog, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
+// If confused ,Read the Docs https://github.com/gerhardsletten/react-reader#add--adjust-custom-css-for-the-epub-html
+
+
 const Epub = () => {
   // Settings Tile Stuff
   const [settingsOpen, setSettingOpen] = useState(false);
@@ -41,6 +44,19 @@ const Epub = () => {
         getRendition={(rendition) => {
           renditionRef.current = rendition;
           renditionRef.current.themes.fontSize(`${size}%`);
+          // Custom Styles
+          rendition.themes.register('custom', {
+            img: {
+              width: '100%',
+            },
+            p: {
+              border: '1px solid green',
+            },
+            h1: {
+              border: '1px solid green',
+            },
+          });
+          rendition.themes.select('custom');
         }}
       />
       <div className="settings">

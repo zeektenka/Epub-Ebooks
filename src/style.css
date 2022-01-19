@@ -3,6 +3,10 @@ body {
   font-family: sans-serif;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .settings {
   position: absolute;
   top: 15px;
@@ -20,7 +24,6 @@ body {
   border: 1px solid black;
   flex-direction: column;
   width: fit-content;
- 
 }
 
 .small-btn {
@@ -44,7 +47,7 @@ body {
 .small-title {
   padding: 0;
   font-size: 12;
-  text-align:center;
+  text-align: center;
 }
 
 .fontsize_change_div {
