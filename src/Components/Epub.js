@@ -41,12 +41,12 @@ const Epub = () => {
         <HiOutlineCog color="grey" fontSize="1.4rem" />
         <div id="settings_container">
           <p>Font Size</p>
-          <div>
-            <button onClick={() => changeSize(Math.max(80, size - 10))}>
+          <div className='fontsize_change_div'>
+            <button className='small-btn' onClick={() => changeSize(Math.max(80, size - 10))}>
               -
             </button>
-            <span>Current size: {size}%</span>
-            <button onClick={() => changeSize(Math.min(130, size + 10))}>
+            <span className="size">{size}%</span>
+            <button className='small-btn' onClick={() => changeSize(Math.min(130, size + 10))}>
               +
             </button>
           </div>
