@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReactReader } from 'react-reader';
-import { HiOutlineCog } from 'react-icons/hi';
+import { HiOutlineCog, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 const Epub = () => {
   // Settings Tile Stuff
@@ -48,7 +48,10 @@ const Epub = () => {
           className="icon-btn"
           onClick={() => setSettingOpen(!settingsOpen)}
         >
-          <HiOutlineCog color="grey" fontSize="1.4rem" />
+          <HiOutlineCog
+            color={settingsOpen ? 'black' : 'grey'}
+            fontSize="1.4rem"
+          />
         </button>
         <div
           id="settings_container"
@@ -57,17 +60,17 @@ const Epub = () => {
           <p className="small-title">Font Size</p>
           <div className="fontsize_change_div">
             <button
-              className="small-btn"
+              className="icon-btn"
               onClick={() => changeSize(Math.max(70, size - 10))}
             >
-              -
+              <HiChevronLeft color="grey" fontSize="1.4rem" />
             </button>
             <span className="size">{size}%</span>
             <button
-              className="small-btn"
+              className="icon-btn"
               onClick={() => changeSize(Math.min(150, size + 10))}
             >
-              +
+              <HiChevronRight color="grey" fontSize="1.4rem" />
             </button>
           </div>
         </div>

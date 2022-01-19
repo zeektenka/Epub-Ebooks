@@ -19,7 +19,8 @@ body {
   border-radius: 3px;
   border: 1px solid black;
   flex-direction: column;
-  justify-content: center;
+  width: fit-content;
+ 
 }
 
 .small-btn {
@@ -36,9 +37,7 @@ body {
 
 .size {
   font-weight: bold;
-  background-color: white;
   border-radius: 3px;
-  border: 1px solid black;
   padding: 4px;
 }
 
