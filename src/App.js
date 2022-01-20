@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './style.css';
 import { Routes, Route } from 'react-router-dom';
-import ReactGa from 'react-ga';
+import ReactGA from 'react-ga';
 
 //Import Pages and Components
 import HomePage from './Pages/HomePage';
