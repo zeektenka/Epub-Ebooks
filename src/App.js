@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.css';
-import { Routes, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 //Import Pages and Components
@@ -11,8 +10,6 @@ import NoPage from './Pages/NoPage';
 
 import DATA from './Data Base/DATA';
 import Epub from './Components/Epub';
-
-// process.env.REACT_APP_GA_TRACKING_NO
 
 // Init Google Analytics
 ReactGA.initialize('G-27RP7RRY2W');
