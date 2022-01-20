@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga';
+import { Routes, Route } from 'react-router-dom';
 
 //Import Pages and Components
 import HomePage from './Pages/HomePage';
@@ -11,17 +10,7 @@ import NoPage from './Pages/NoPage';
 import DATA from './Data Base/DATA';
 import Epub from './Components/Epub';
 
-// Init Google Analytics
-ReactGA.initialize('G-27RP7RRY2W');
-
 export default function App() {
-  const location = useLocation();
-
-  // Fired on every route change
-  useEffect(() => {
-    ReactGA.pageview(location.pathname + location.search);
-  }, [location]);
-
   const UrlBase = 'https://zeektenka.github.io/files/';
 
   const routes = DATA.map((item) => {
