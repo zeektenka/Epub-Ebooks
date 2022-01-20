@@ -91,7 +91,7 @@ const Epub = ({ uri }) => {
             <span className="size">{size}%</span>
             <button
               className="icon-btn"
-              onClick={() => changeSize(Math.min(150, size + 10))}
+              onClick={() => changeSize(Math.min(200, size + 10))}
             >
               <HiChevronRight color="grey" fontSize="1.4rem" />
             </button>
